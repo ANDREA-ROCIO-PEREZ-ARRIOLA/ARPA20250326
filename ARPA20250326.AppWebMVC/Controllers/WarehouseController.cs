@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ARPA20250326.AppWebMVC.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ARPA20250326.AppWebMVC.Controllers
 {
+    [Authorize(Roles = "GERENTE")]
     public class WarehouseController : Controller
     {
         private readonly Test20250326DbContext _context;
