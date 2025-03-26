@@ -177,8 +177,7 @@ namespace ARPA20250326.AppWebMVC.Controllers
 
    
 
-            if (ModelState.IsValid)
-            {
+   
                 var userToUpdate = await _context.Users
                  .Include(r => r.Role)
                 .FirstOrDefaultAsync(m => m.Id == user.Id);
@@ -203,7 +202,7 @@ namespace ARPA20250326.AppWebMVC.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
-            }
+            
             return View(user);
         }
 
