@@ -4,7 +4,27 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1 class="display-4 text-center" style="font-family:'Cambria Math'">Detalle Bodega</h1>
+
+<h4 style="font-family:'Cambria Math'" class="text-secondary text-center">Bodegas</h4>
+<hr />
+<dl class="row">
+    <dt class="col-sm-2 fw-bold">
+        @Html.DisplayNameFor(model => model.WarehouseName)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.WarehouseName)
+    </dd>
+
+</dl>
+<hr />
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning ">Editar</a>
+    <a asp-action="Index" class="btn btn-dark">Volver</a>
+</div>
+
+
+@* <h1>Details</h1>
 
 <div>
     <h4>Warehouse</h4>
@@ -21,4 +41,4 @@
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
-</div>
+</div> *@
