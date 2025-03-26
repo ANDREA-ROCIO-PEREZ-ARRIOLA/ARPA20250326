@@ -4,7 +4,54 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<div>
+    <h1 class="display-4 text-center" style="font-family:'Cambria Math'">Detalles de producto</h1>
+    <h4 style="font-family:'Cambria Math'" class="text-secondary text-center">Productos</h4>
+    <div class="d-flex flex-column justify-content-center align-items-center vh-100">
+        <div class="col-md-6 shadow-lg rounded-3 p-4 bg-light">
+            <dl class="row text-center">
+                <dt class="col-sm-4 fw-bold text-end">
+                    @Html.DisplayNameFor(model => model.ProductName)
+                </dt>
+                <dd class="col-sm-4 fw-bold text-end">
+                    @Html.DisplayFor(model => model.ProductName)
+                </dd>
+                <dt class="col-sm-8 fw-normal text-start">
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+                <dd class="col-sm-4 fw-bold text-end">
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+                <dt class="col-sm-8 fw-normal text-start">
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
+                <dd class="col-sm-4 fw-bold text-end">
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
+                <dt class="col-sm-8 fw-normal text-start">
+                    @Html.DisplayNameFor(model => model.Brand)
+                </dt>
+                <dd class="col-sm-4 fw-bold text-end">
+                    @Html.DisplayFor(model => model.Brand.Id)
+                </dd>
+                <dt class="col-sm-8 fw-normal text-start">
+                    @Html.DisplayNameFor(model => model.Warehouse)
+                </dt>
+                <dd class="col-sm-4 fw-bold text-end">
+                    @Html.DisplayFor(model => model.Warehouse.Id)
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning btn-sm">Editar</a>
+    <a asp-action="Index" class="btn btn-dark">Volver</a>
+</div>
+
+
+
+@* <h1>Details</h1>
 
 <div>
     <h4>Product</h4>
@@ -45,4 +92,4 @@
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
-</div>
+</div> *@
