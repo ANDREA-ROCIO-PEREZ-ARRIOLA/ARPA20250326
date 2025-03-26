@@ -19,9 +19,16 @@ namespace ARPA20250326.AppWebMVC.Controllers
         }
 
         // GET: Warehouse
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(Warehouse warehouse, int topRegistro = 10)
         {
-            return View(await _context.Warehouses.ToListAsync());
+            var query = _context.Warehouses.AsQueryable();
+            if (!string.IsNullOrWhiteSpace(warehouse.WarehouseName))
+                query = query.Where(s => s.WarehouseName.Contains(warehouse.WarehouseName));          
+            if (topRegistro > 0)
+                query = query.Take(topRegistro);
+
+
+            return View(await query.ToListAsync());
         }
 
         // GET: Warehouse/Details/5
