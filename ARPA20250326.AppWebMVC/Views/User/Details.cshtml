@@ -4,7 +4,49 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+
+<div>
+    <h1 class="display-4 text-center" style="font-family:'Cambria Math'">Detalles de Usuario</h1>
+    <h4 style="font-family:'Cambria Math'" class="text-secondary text-center">Usuarios</h4>
+    <div class="d-flex flex-column justify-content-center align-items-center vh-100">
+        <div class="col-md-6 shadow-lg rounded-3 p-4 bg-light">
+            <dl class="row text-center">
+                <dt class="col-sm-4 fw-bold text-end">
+                    @Html.DisplayNameFor(model => model.Username)
+                </dt>
+                <dd class="col-sm-8 fw-normal text-start">
+                    @Html.DisplayFor(model => model.Username)
+                </dd>
+                <dt class="col-sm-4 fw-bold text-end">
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+                <dd class="col-sm-8 fw-normal text-start">
+                    @Html.DisplayFor(model => model.Email)
+                    @*  </dd>
+            <dt class="col-sm-4 fw-bold text-end">
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+            <dd class="col-sm-8 fw-normal text-start">
+            @Html.DisplayFor(model => model.Password)
+        </dd> *@
+                <dt class="col-sm-4 fw-bold text-end">
+                        @Html.DisplayNameFor(model => model.Role)
+                </dt>
+                <dd class="col-sm-8 fw-normal text-start">
+                        @Html.DisplayFor(model => model.Role)
+                </dd>
+            </dl>
+
+            <div class="d-flex justify-content-center gap-2">
+                <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning btn-sm">Editar</a>
+                <a asp-action="Index" class="btn btn-dark">Volver</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@* <h1>Details</h1>
 
 <div>
     <h4>User</h4>
@@ -40,3 +82,4 @@
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+ *@

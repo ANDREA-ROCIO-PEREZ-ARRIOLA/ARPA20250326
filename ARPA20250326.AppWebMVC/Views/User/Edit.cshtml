@@ -4,7 +4,48 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+
+<h1 class="display-4 text-center" style="font-family:'Cambria Math'">Editar Usuario</h1>
+
+<h4 style="font-family:'Cambria Math'" class="text-secondary text-center">Usuarios</h4>
+<hr />
+
+<div class=" justify-content-center align-items-center vh-100">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-4 shadow-lg rounded-3 p-4 bg-light justify-content-center align-items-center">
+
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group mb-3">
+                    <label asp-for="Username" class="form-label fw-bold shadow-sm"></label>
+                    <input asp-for="Username" class="form-control shadow-sm" placeholder="Ingrese su nombre" />
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="Email" class="form-label fw-bold shadow-sm"></label>
+                    <input asp-for="Email" class="form-control" placeholder="Ingrese su Email" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                  <div class="form-group">
+                <label asp-for="Role" class="control-label"></label>
+                <input asp-for="Role" class="form-control" />
+                <span asp-validation-for="Role" class="text-danger"></span>
+            </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Guardar" class="btn btn-warning btn-sm" />
+                    <a asp-action="Index" class="btn btn-dark btn-sm">Volver</a>
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <
+</div>
+
+
+@* <h1>Edit</h1>
 
 <h4>User</h4>
 <hr />
@@ -42,7 +83,7 @@
 
 <div>
     <a asp-action="Index">Back to List</a>
-</div>
+</div> *@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -153,8 +153,6 @@ namespace ARPA20250326.AppWebMVC.Controllers
             }
 
 
-            // Lista de roles disponibles
-            ViewData["Roles"] = new SelectList(new List<string> { "ADMINISTRADOR", "GERENTE" });
 
 
             var user = await _context.Users.FindAsync(id);
@@ -170,20 +168,26 @@ namespace ARPA20250326.AppWebMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Username,Email,Password,Role")] User user)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Username,Email,Role")] User user)
         {
             if (id != user.Id)
             {
                 return NotFound();
             }
 
+   
+
             if (ModelState.IsValid)
             {
+                var userToUpdate = await _context.Users
+                 .Include(r => r.Role)
+                .FirstOrDefaultAsync(m => m.Id == user.Id);
+
                 try
                 {
-                    user.Username = user.Username;
-                    user.Email = user.Email;
-                    user.Role = user.Role;
+                    userToUpdate.Username = user.Username;
+                    userToUpdate.Email = user.Email;
+                    userToUpdate.Role = user.Role;
                     _context.Update(user);
                     await _context.SaveChangesAsync();
                 }
