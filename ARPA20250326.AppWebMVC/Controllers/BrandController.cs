@@ -19,9 +19,16 @@ namespace ARPA20250326.AppWebMVC.Controllers
         }
 
         // GET: Brand
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(Brand brand, int topRegistro = 10)
         {
-            return View(await _context.Brands.ToListAsync());
+            var query = _context.Brands.AsQueryable();
+            if (!string.IsNullOrWhiteSpace(brand.BrandName))
+                query = query.Where(s => s.BrandName.Contains(brand.BrandName));
+            if (topRegistro > 0)
+                query = query.Take(topRegistro);
+
+
+            return View(await query.ToListAsync());
         }
 
         // GET: Brand/Details/5
