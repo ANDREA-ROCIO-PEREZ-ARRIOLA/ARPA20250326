@@ -27,9 +27,9 @@ namespace ARPA20250326.AppWebMVC.Controllers
             if (!string.IsNullOrWhiteSpace(producto.Description))
                 query = query.Where(s => s.Description.Contains(producto.Description));
             if (producto.Id > 0)
-                query = query.Where(s => s.Id == producto.Id);
+                query = query.Where(s => s.BrandId == producto.BrandId);
             if (producto.Id > 0)
-                query = query.Where(s => s.Id == producto.Id);
+                query = query.Where(s => s.WarehouseId == producto.WarehouseId);
             if (topRegistro > 0)
                 query = query.Take(topRegistro);
             query = query
@@ -39,8 +39,8 @@ namespace ARPA20250326.AppWebMVC.Controllers
             marcas.Add(new Brand { BrandName = "SELECCIONAR", Id = 0 });
             var categorias = _context.Warehouses.ToList();
             categorias.Add(new Warehouse { WarehouseName = "SELECCIONAR", Id = 0 });
-            ViewData["Id"] = new SelectList(categorias, "Id", "WarehouseName", 0);
-            ViewData["Id"] = new SelectList(marcas, "Id", "BrandName", 0);
+            ViewData["WarehouseId"] = new SelectList(categorias, "Id", "WarehouseName", 0);
+            ViewData["BrandId"] = new SelectList(marcas, "Id", "BrandName", 0);
 
             return View(await query.ToListAsync());
         }
